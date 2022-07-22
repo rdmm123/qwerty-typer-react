@@ -1,11 +1,11 @@
-import './styles.css'
+import "./styles.css";
 
 export default function GameText({ written, wrong, toWrite }) {
   return (
-    <div class="text-div">
-      <span class="text-written">{written}</span>
-      <span class="text-wrong">{wrong}</span>
-      <span class="text-to-write">{toWrite}</span>
+    <div className="text-div">
+      <span className="text-written">{written}</span>
+      <span className="text-wrong">{wrong}</span>
+      <span className="text-to-write">{toWrite}</span>
     </div>
   );
 }
