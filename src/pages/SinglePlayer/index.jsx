@@ -16,7 +16,7 @@ export default function SinglePlayer() {
       if (c !== " ") break;
       spaceCounter++;
     }
-    const promptWords = promptText.match(/[\w-']+|[^\w\s]+/g);
+    const promptWords = promptText.match(/[\w-'\u00C0-\u017F]+|[^\w\s]/g);
     console.log(promptWords);
     const purgedWords =
       promptWords !== null ? promptWords.filter((word) => word.length > 0) : [];
