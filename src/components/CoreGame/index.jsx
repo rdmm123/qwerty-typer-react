@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import GameText from "../../components/GameText";
-import getText from "../../services/getText";
 import GameStats from "../GameStats";
+import useText from "../../hooks/useText";
 
 export default function CoreGame({ onFinished = () => {} }) {
-  const fullText = getText();
-  const [textToWrite, setTextToWrite] = useState(fullText);
+  const { loading, text: textToWrite, setText: setTextToWrite } = useText();
+
   const [writtenText, setWrittenText] = useState("");
   const [wrongText, setWrongText] = useState("");
 
   useEffect(() => {
-    if (textToWrite.length === 0) {
+    if (loading) return;
+    if (textToWrite.length === 0 && wrongText.length === 0) {
       onFinished();
     }
   }, [textToWrite]);
@@ -82,7 +83,7 @@ export default function CoreGame({ onFinished = () => {} }) {
 
     if (key === "Backspace")
       return backspacePressed({ ctrlKey, promptText: target.value });
-
+    console.log(event);
     // If its not a letter
     if (key.length > 1) return;
 
@@ -108,8 +109,18 @@ export default function CoreGame({ onFinished = () => {} }) {
 
   return (
     <>
-      <GameStats />
-      <GameText written={writtenText} wrong={wrongText} toWrite={textToWrite} />
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <>
+          <GameStats charCount={writtenText.length} />
+          <GameText
+            written={writtenText}
+            wrong={wrongText}
+            toWrite={textToWrite}
+          />
+        </>
+      )}
       <input
         type="text"
         name="prompt"
@@ -119,6 +130,7 @@ export default function CoreGame({ onFinished = () => {} }) {
         onKeyDown={handleKeyUp}
         autoFocus
         autoComplete="off"
+        readOnly={loading}
       />
     </>
   );

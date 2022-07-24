@@ -1,0 +1,10 @@
+.GameStats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.GameStats span {
+    display: inline-block;
+}

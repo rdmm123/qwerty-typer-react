@@ -1,3 +1,5 @@
-export default function getText({ lang = "es" } = { lang: "es" }) {
-  return `En una pequeña ciudad, vivía una niña llamada Clara. Era muy tímida y nunca hablaba con nadie. Un día, Clara encontró una hermosa mariposa en el jardín. La mariposa era muy amistosa y pronto se hicieron amigas.`;
+const TEXT_API_ENDPOINT = "https://qwerty.up.railway.app/api/generate/";
+
+export default function getText({ lang = "spanish" } = { lang: "spanish" }) {
+  return fetch(`${TEXT_API_ENDPOINT}?lang=${lang}`).then((res) => res.json());
 }
