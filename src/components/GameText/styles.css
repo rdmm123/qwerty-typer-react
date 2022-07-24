@@ -1,3 +1,8 @@
+.GameText {
+    margin-bottom: 50px;
+    line-height: 1.2;
+}
+
 .text-wrong {
     background: rgba(255, 0, 0, 0.6);
 }

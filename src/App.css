@@ -1,0 +1,23 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.menu-icon {
+    margin: 15px;
+    border: none;
+    color: grey;
+    font-size: 20px;
+    background: none;
+}
+
+.menu-button {
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    color: white;
+}

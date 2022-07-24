@@ -1,0 +1,22 @@
+.CoreGame {
+    width: 70%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.CoreGame .prompt {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    outline: none;
+    color: grey;
+    border: none;
+    border-bottom: 2px solid grey;
+    font-size: 25px;
+    background: none;
+    caret-color: transparent;
+}

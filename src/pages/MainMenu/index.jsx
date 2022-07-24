@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import "./styles.css";
 
 export default function MainMenu() {
   return (

@@ -1,0 +1,43 @@
+.IconSelect {
+  display: inline-block;
+  position: relative;
+}
+
+.IconSelect button {
+  border: 0;
+  background: none;
+  padding: 6px 8px;
+  position: relative;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.IconSelect button:hover {
+  cursor: pointer;
+}
+
+.IconSelect ul.options {
+  position: absolute;
+  display: none;
+  list-style: none;
+  margin-top: -3px;
+}
+
+.IconSelect ul.show {
+  display: block;
+}
+
+.IconSelect ul.options li {
+  font-size: 1rem;
+  padding: 6px 10px;
+  color: grey;
+  border-bottom: 1px solid grey;
+}
+
+.IconSelect ul.options li:active,
+.IconSelect ul.options li:focus,
+.IconSelect ul.options li:hover,
+.IconSelect ul.options li[aria-selected="true"] {
+  color: white;
+  border-bottom: 1px solid #fff;
+}

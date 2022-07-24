@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import getText from "../services/getText";
+import GameStateContext from "../context/GameStateContext";
 
 export default function useText() {
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(true);
+  const { loadingState } = useContext(GameStateContext);
+  const [loading, setLoading] = loadingState;
 
   useEffect(() => {
     getText().then(({ text: newText }) => {

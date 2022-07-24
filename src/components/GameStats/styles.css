@@ -1,10 +1,12 @@
 .GameStats {
+    color: gray;
+    width: 100%;
+    margin-bottom: 30px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 20px 0;
+    justify-content: center;
 }
 
 .GameStats span {
     display: inline-block;
+    margin: 0px 20px;
 }

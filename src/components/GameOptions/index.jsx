@@ -1,26 +1,41 @@
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
+import { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft,
+  faArrowsRotate,
+  faLanguage,
+} from "@fortawesome/free-solid-svg-icons";
+import "./styles.css";
+import IconSelect from "../IconSelect";
+import { useGlobalGameState } from "../../hooks/useGlobalGameState";
 
 export default function GameOptions() {
   const [location, setLocation] = useLocation();
+  const { loading, finished } = useGlobalGameState();
 
   return (
     <header className="GameOptions">
-      <div className="left">
+      <div>
         <button
           onClick={() => setLocation("/")}
           className="menu-button menu-icon"
         >
-          Home
-          <i className="fa-solid fa-arrow-left"></i>
+          <FontAwesomeIcon icon={faArrowLeft} />
         </button>
       </div>
-      <div className="right">
-        <select name="lang_select" id="lang_select" className="lang-select">
+      <div>
+        <IconSelect icon={faLanguage} disabled={loading}>
           <option value="english">English</option>
           <option value="spanish">Español</option>
-        </select>
-        <button id="reset_text" className="menu-icon menu-button">
-          <i className="fa-solid fa-arrows-rotate"></i>
+        </IconSelect>
+        <button
+          id="reset_text"
+          className="menu-icon menu-button"
+          disabled={loading}
+          onClick={() => console.log("holla")}
+        >
+          <FontAwesomeIcon icon={faArrowsRotate} />
         </button>
       </div>
     </header>

@@ -1,10 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import GameText from "../../components/GameText";
 import GameStats from "../GameStats";
 import useText from "../../hooks/useText";
+import GameStateContext from "../../context/GameStateContext";
 
-export default function CoreGame({ onFinished = () => {} }) {
-  const { loading, text: textToWrite, setText: setTextToWrite } = useText();
+import "./styles.css";
+import Loader from "../Loader";
+import { useGlobalGameState } from "../../hooks/useGlobalGameState";
+
+export default function CoreGame({}) {
+  const { text: textToWrite, setText: setTextToWrite } = useText();
+  const { finishedState } = useContext(GameStateContext);
+  const { loading } = useGlobalGameState();
+  const [finished, setFinished] = finishedState;
 
   const [writtenText, setWrittenText] = useState("");
   const [wrongText, setWrongText] = useState("");
@@ -12,7 +20,7 @@ export default function CoreGame({ onFinished = () => {} }) {
   useEffect(() => {
     if (loading) return;
     if (textToWrite.length === 0 && wrongText.length === 0) {
-      onFinished();
+      setFinished(true);
     }
   }, [textToWrite]);
 
@@ -108,9 +116,9 @@ export default function CoreGame({ onFinished = () => {} }) {
   };
 
   return (
-    <>
+    <div className="CoreGame">
       {loading ? (
-        <h3>Loading...</h3>
+        <Loader />
       ) : (
         <>
           <GameStats charCount={writtenText.length} />
@@ -132,6 +140,6 @@ export default function CoreGame({ onFinished = () => {} }) {
         autoComplete="off"
         readOnly={loading}
       />
-    </>
+    </div>
   );
 }
