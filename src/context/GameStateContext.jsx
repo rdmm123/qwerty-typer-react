@@ -7,6 +7,7 @@ export function GameStateContextProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [finished, setFinished] = useState(false);
   const [language, setLanguage] = useState("spanish");
+  const [reset, setReset] = useState(false);
 
   return (
     <Context.Provider
@@ -14,6 +15,7 @@ export function GameStateContextProvider({ children }) {
         loadingState: [loading, setLoading],
         finishedState: [finished, setFinished],
         languageState: [language, setLanguage],
+        resetState: [reset, setReset],
       }}
     >
       {children}

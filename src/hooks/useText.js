@@ -10,7 +10,7 @@ export default function useText() {
 
   const { loadingState } = useContext(GameStateContext);
   const [loading, setLoading] = loadingState;
-  const { language } = useGlobalGameState();
+  const { language, reset } = useGlobalGameState();
 
   useEffect(() => {
     setLoading(true);
@@ -20,7 +20,7 @@ export default function useText() {
       setText(newText);
       setLoading(false);
     });
-  }, [language]);
+  }, [language, reset]);
 
   return {
     textState: [text, setText],

@@ -16,11 +16,12 @@ export default function GameOptions() {
   const { loading } = useGlobalGameState();
   const {
     languageState: [language, setLanguage],
+    resetState: [reset, setReset],
   } = useContext(GameStateContext);
 
-  const handleChange = (value) => {
-    setLanguage(value);
-  };
+  const handleChange = (value) => setLanguage(value);
+
+  const resetText = () => setReset(!reset);
 
   return (
     <header className="GameOptions">
@@ -43,10 +44,9 @@ export default function GameOptions() {
           <option value="spanish">Español</option>
         </IconSelect>
         <button
-          id="reset_text"
           className="menu-icon menu-button"
           disabled={loading}
-          onClick={() => console.log("holla")}
+          onClick={resetText}
         >
           <FontAwesomeIcon icon={faArrowsRotate} />
         </button>
