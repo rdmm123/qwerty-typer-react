@@ -9,13 +9,19 @@ import Loader from "../Loader";
 import { useGlobalGameState } from "../../hooks/useGlobalGameState";
 
 export default function CoreGame({}) {
-  const { text: textToWrite, setText: setTextToWrite } = useText();
-  const { finishedState } = useContext(GameStateContext);
-  const { loading } = useGlobalGameState();
-  const [finished, setFinished] = finishedState;
+  const {
+    textState: [textToWrite, setTextToWrite],
+    writtenTextState: [writtenText, setWrittenText],
+    wrongTextState: [wrongText, setWrongText],
+  } = useText();
 
-  const [writtenText, setWrittenText] = useState("");
-  const [wrongText, setWrongText] = useState("");
+  const { finishedState: [finished, setFinished] } = useContext(GameStateContext);
+  const { loading } = useGlobalGameState();
+
+  useEffect(() => {
+    setWrittenText("");
+    setWrongText("");
+  }, []);
 
   useEffect(() => {
     if (loading) return;

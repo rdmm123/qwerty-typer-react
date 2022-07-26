@@ -9,10 +9,18 @@ import {
 import "./styles.css";
 import IconSelect from "../IconSelect";
 import { useGlobalGameState } from "../../hooks/useGlobalGameState";
+import GameStateContext from "../../context/GameStateContext";
 
 export default function GameOptions() {
   const [location, setLocation] = useLocation();
-  const { loading, finished } = useGlobalGameState();
+  const { loading } = useGlobalGameState();
+  const {
+    languageState: [language, setLanguage],
+  } = useContext(GameStateContext);
+
+  const handleChange = (value) => {
+    setLanguage(value);
+  };
 
   return (
     <header className="GameOptions">
@@ -25,7 +33,12 @@ export default function GameOptions() {
         </button>
       </div>
       <div>
-        <IconSelect icon={faLanguage} disabled={loading}>
+        <IconSelect
+          icon={faLanguage}
+          disabled={loading}
+          defaultValue={language}
+          onChange={handleChange}
+        >
           <option value="english">English</option>
           <option value="spanish">Español</option>
         </IconSelect>
