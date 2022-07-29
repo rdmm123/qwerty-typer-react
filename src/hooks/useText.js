@@ -8,17 +8,22 @@ export default function useText() {
   const [writtenText, setWrittenText] = useState("");
   const [wrongText, setWrongText] = useState("");
 
-  const { loadingState } = useContext(GameStateContext);
+  const {
+    loadingState,
+    finishedState: [finished, setFinished],
+  } = useContext(GameStateContext);
   const [loading, setLoading] = loadingState;
   const { language, reset } = useGlobalGameState();
 
   useEffect(() => {
     setLoading(true);
     getText({ lang: language }).then(({ text: newText }) => {
+      console.log("hello");
       setWrittenText("");
       setWrongText("");
       setText(newText);
       setLoading(false);
+      setFinished(false);
     });
   }, [language, reset]);
 

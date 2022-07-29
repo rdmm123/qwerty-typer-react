@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
 import GameText from "../../components/GameText";
 import GameStats from "../GameStats";
 import useText from "../../hooks/useText";
@@ -9,14 +9,18 @@ import Loader from "../Loader";
 import { useGlobalGameState } from "../../hooks/useGlobalGameState";
 
 export default function CoreGame({}) {
+  const firstUpdate = useRef(true);
+
   const {
     textState: [textToWrite, setTextToWrite],
     writtenTextState: [writtenText, setWrittenText],
     wrongTextState: [wrongText, setWrongText],
   } = useText();
 
-  const { finishedState: [finished, setFinished] } = useContext(GameStateContext);
-  const { loading } = useGlobalGameState();
+  const {
+    finishedState: [finished, setFinished],
+  } = useContext(GameStateContext);
+  const { loading, reset } = useGlobalGameState();
 
   useEffect(() => {
     setWrittenText("");
@@ -24,7 +28,13 @@ export default function CoreGame({}) {
   }, []);
 
   useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
     if (loading) return;
+
     if (textToWrite.length === 0 && wrongText.length === 0) {
       setFinished(true);
     }
@@ -97,7 +107,6 @@ export default function CoreGame({}) {
 
     if (key === "Backspace")
       return backspacePressed({ ctrlKey, promptText: target.value });
-    console.log(event);
     // If its not a letter
     if (key.length > 1) return;
 

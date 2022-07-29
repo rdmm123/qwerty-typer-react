@@ -1,24 +1,24 @@
 .MainMenu {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .MainMenu nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .MainMenu a {
-    color: gray;
-    text-decoration: none;
-    margin: 10px 0;
-    font-size: 25px;
+  color: gray;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 25px;
 }
 
 .MainMenu a:hover {
-    color: white;
-    text-decoration: underline;
+  color: white;
+  text-decoration: underline;
 }

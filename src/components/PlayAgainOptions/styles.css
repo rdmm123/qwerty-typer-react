@@ -1,0 +1,36 @@
+.PlayAgainOptions {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.PlayAgainOptions .option {
+  text-align: center;
+  margin: 0px 50px;
+  border: none;
+  color: grey;
+  font-size: 70px;
+  background: none;
+  text-decoration: none;
+}
+
+.PlayAgainOptions .option :nth-child(1) {
+  margin-bottom: 10px;
+}
+
+.PlayAgainOptions .option:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.PlayAgainOptions .option p {
+  font-size: 15px;
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.PlayAgainOptions .option:hover p {
+  display: block;
+  color: white;
+}
