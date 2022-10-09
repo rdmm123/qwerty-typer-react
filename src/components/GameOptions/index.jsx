@@ -4,22 +4,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
   faArrowsRotate,
-  faLanguage,
 } from "@fortawesome/free-solid-svg-icons";
 import "./styles.css";
-import IconSelect from "../IconSelect";
 import { useGlobalGameState } from "../../hooks/useGlobalGameState";
 import GameStateContext from "../../context/GameStateContext";
+import LanguageSelect from "../LanguageSelect";
 
 export default function GameOptions() {
   const [location, setLocation] = useLocation();
   const { loading } = useGlobalGameState();
   const {
-    languageState: [language, setLanguage],
     resetState: [reset, setReset],
   } = useContext(GameStateContext);
-
-  const handleChange = (value) => setLanguage(value);
 
   const resetText = () => setReset(!reset);
 
@@ -34,15 +30,7 @@ export default function GameOptions() {
         </button>
       </div>
       <div>
-        <IconSelect
-          icon={faLanguage}
-          disabled={loading}
-          defaultValue={language}
-          onChange={handleChange}
-        >
-          <option value="english">English</option>
-          <option value="spanish">Español</option>
-        </IconSelect>
+        <LanguageSelect />
         <button
           className="menu-icon menu-button"
           disabled={loading}

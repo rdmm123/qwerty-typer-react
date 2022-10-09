@@ -6,7 +6,7 @@ const Context = React.createContext({});
 export function GameStateContextProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [finished, setFinished] = useState(false);
-  const [language, setLanguage] = useState("spanish");
+  const [language, setLanguage] = useState("es");
   const [reset, setReset] = useState(false);
 
   return (

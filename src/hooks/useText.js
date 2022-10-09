@@ -18,14 +18,13 @@ export default function useText() {
   useEffect(() => {
     setLoading(true);
     getText({ lang: language }).then(({ text: newText }) => {
-      console.log("hello");
       setWrittenText("");
       setWrongText("");
       setText(newText);
       setLoading(false);
       setFinished(false);
     });
-  }, [language, reset]);
+  }, [reset]);
 
   return {
     textState: [text, setText],

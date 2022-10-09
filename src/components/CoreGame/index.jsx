@@ -10,6 +10,7 @@ import { useGlobalGameState } from "../../hooks/useGlobalGameState";
 
 export default function CoreGame({}) {
   const firstUpdate = useRef(true);
+  const prompt = useRef();
 
   const {
     textState: [textToWrite, setTextToWrite],
@@ -26,6 +27,11 @@ export default function CoreGame({}) {
     setWrittenText("");
     setWrongText("");
   }, []);
+
+  useEffect(() => {
+    console.log("hola")
+    prompt.current.value = "";
+  }, [reset]);
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -148,6 +154,7 @@ export default function CoreGame({}) {
         type="text"
         name="prompt"
         id="prompt"
+        ref={prompt}
         className="prompt"
         onBlur={(event) => event.target.focus()}
         onKeyDown={handleKeyUp}
